@@ -26,7 +26,13 @@ const app = Vue.createApp({
             ],
 
         }
+    },
+    methods: {
+        onCardClick () {
+
+        }
     }
+
 })
 
 app.mount('#app')
