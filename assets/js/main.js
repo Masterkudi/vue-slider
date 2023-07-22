@@ -1,4 +1,6 @@
-const app = Vue.createApp({
+const { createApp } = Vue;
+ 
+const app = createApp({
     data() {
         return {
             images: [
@@ -24,20 +26,25 @@ const app = Vue.createApp({
                     text: 'Marvel\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.',
                 }
             ],
-
+            currentImageIndex: 0 // Indice dell'immagine corrente
         }
     },
     methods: {
-        onCardClick () {
-
-        }
+        onCardClick(index) {
+            this.currentImageIndex = index;
+        },
+        prevBtn() {
+            this.currentImageIndex = (this.currentImageIndex - 1 + this.images.length) % this.images.length;
+        },
+        nextBtn() {
+            this.currentImageIndex = (this.currentImageIndex + 1) % this.images.length;
+        },
+        
     }
 
-})
+});
 
-app.mount('#app')
-
-console.log(app);
+app.mount('#app');
 /*
 const messaggio = "Questa è il primo messaggio stampato tramite Vue.js all'interno del DOM"
 //templeate literal

@@ -14,19 +14,17 @@
 <!--provo a inserire le immagini tramite Vue-->
 <body>
     <div id="app">
-        <h1 class="my-5 text-center">Vue Slider</h1>
+        <h1 class="my-5 text-center">Vue Slider</h1> 
         <main class="container pb-5">
             <div class="d-flex overflow-auto vue-slider-container">
                 <button class="btn btn-link" id="carousel-prev-btn"><i class="fas fa-chevron-left"></i></button>
-                <div class="card" v-for="(imgSource, i) in images" @click="onCardClick">
-                    <img v-bind:src="imgSource" class="card-img-top" v-bind:alt="'immagine #' + i">
+                <div class="card" v-if="currentImageIndex >= 0 && currentImageIndex < images.length" @click="onCardClick(i)">
+                    <img v-bind:src="images[currentImageIndex].image" class="card-img-top" v-bind:alt="'immagine #' + currentImageIndex">
                 </div>
                 <button class="btn btn-link" id="carousel-next-btn"><i class="fas fa-chevron-right"></i></button>
             </div>
         </main>
     </div>
-
-
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
